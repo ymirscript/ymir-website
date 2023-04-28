@@ -16,7 +16,7 @@ html, body {
     left: 0;
     top: 0;
     background: rgb(25,24,24);
-    background: linear-gradient(34deg, rgba(25,24,24,1) 0%, rgba(57,55,55,1) 72%, rgba(25,24,24,1) 100%);
+    background: linear-gradient(34deg, darken(rgba(25,24,24,1), 10%) 0%, darken(rgba(57,55,55,1), 10%) 72%, darken(rgba(25,24,24,1), 10%) 100%);
 }
 
 .site-nav {
@@ -75,7 +75,6 @@ html, body {
             width: 80%;
             .highlight {
                 color: #f5c518;
-                // make a red gradient
                 background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
                 background-clip: text;
                 -webkit-background-clip: text;
@@ -106,6 +105,249 @@ html, body {
         img {
             width: 80%;
             height: 80%;
+        }
+    }
+}
+
+.features-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+        width: 60%;
+        text-align: left;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+    .cards {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4rem;
+        .card {
+            $color: #f5c518;
+            width: 20rem;
+            height: 15rem;
+            background: radial-gradient(
+                150rem circle at 0 0,
+                rgba($color, 0),
+                transparent 0%
+            );
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: all 0.15s;
+            &:hover {
+                transform: scale(0.97);
+                &::before {
+                    opacity: 1;
+                }
+            }
+            &::before {
+                content: "";
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: inherit;
+                background: radial-gradient(
+                    60rem circle at var(--xPos) var(--yPos),
+                    rgba($color, 0.1),
+                    transparent 35%
+                );
+                opacity: 0;
+                transition: all 0.15s ease-in-out;
+            }
+            .card-content {
+                position: relative;
+                background-color: #1c1c1d;
+                border-radius: inherit;
+                transition: all 0.25s;
+                height: calc(100% - 4.1rem);
+                width: calc(100% - 4.1rem);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 2rem;
+                p {
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    margin-bottom: 0.8rem;
+                }
+                small {
+                    font-size: 1.1rem;
+                    font-weight: 400;
+                    opacity: 0.6;
+                }
+                .icon {
+                    position: absolute;
+                    width: calc(100% - 2rem);
+                    height: 100%;
+                    margin-right: 2rem;
+                    opacity: 0.1;
+                    overflow: hidden;
+                    i {
+                        position: absolute;
+                        top: 0.5rem;
+                        right: -1rem;
+                        font-size: 10rem;
+                        color: rgba(255,0,0,1);
+                        background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.install-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+        width: 60%;
+        text-align: left;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    .setups {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        .setup {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            .title {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                i {
+                    font-size: 1.5rem;
+                    color: #f5c518;
+                    background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+            .command {
+                background-color: #1c1c1d;
+                border-radius: 0.5rem;
+                padding: 1rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .text {
+                    font-size: 0.9rem;
+                    font-weight: 200;
+                    font-family: monospace;
+                    opacity: 0.8;
+                    flex-grow: 1;
+                }
+                .btn {
+                    opacity: 0.5;
+                    transition: all 0.15s;
+                    cursor: pointer;
+                    &:hover {
+                        opacity: 1;
+                    }
+                    &:active {
+                        transform: scale(0.96);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.more-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+        width: 60%;
+        text-align: left;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .subtitle {
+        width: 60%;
+        text-align: left;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.8;
+    }
+
+    .links {
+        width: 60%;
+        height: 10rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        .link {
+            text-decoration: none;
+            color: #f5c518;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 1rem;
+            padding: 1rem;
+            i {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1.1rem;
+                font-weight: 600;
+                user-select: none;
+            }
+            &:not(:hover) i {
+                background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            &:not(:hover) p {
+                background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            &:hover {
+                background-color: #1c1c1d;
+                background: linear-gradient(34deg, rgba(245,197,24,1) 0%, rgba(245,197,24,1) 30%, rgba(255,0,0,1) 100%);
+                i, p {
+                    color: #fff;
+                }
+            }
         }
     }
 }
