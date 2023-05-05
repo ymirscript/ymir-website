@@ -21,6 +21,7 @@ html, body {
 
 .site-nav {
     position: fixed;
+    z-index: 100;
     margin-left: 10%;
     width: 90%;
     height: 3rem;
